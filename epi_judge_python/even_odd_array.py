@@ -10,12 +10,13 @@ def even_odd(A):
     even, odd = 0, len(A)-1
     while even < odd:
         # Skip to the odd number for the even index
-        while A[even] % 2 == 0:
+        while even < odd and A[even] % 2 == 0:
             even += 1
-        while A[odd] % 2 != 0:
+        while even < odd and A[odd] % 2 != 0:
             odd -= 1
-        A[even], A[odd] = A[odd], A[even]
-        even, odd =  even + 1, odd - 1
+        if even < odd:
+            A[even], A[odd] = A[odd], A[even]
+            even, odd =  even + 1, odd - 1
     return
 
 
